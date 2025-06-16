@@ -1,6 +1,6 @@
 local AddLights = import('/lua/nomadsutils.lua').AddLights
 local NStructureUnit = import('/lua/nomadsunits.lua').NStructureUnit
-local NAMFlakWeapon = import('/lua/nomadsweapons.lua').NAMFlakWeapon
+local NAMFlakWeapon = import("/lua/terranweapons.lua").TAMPhalanxWeapon
 
 NStructureUnit = AddLights(NStructureUnit)
 
