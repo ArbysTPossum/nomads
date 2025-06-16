@@ -10,7 +10,6 @@ XNB4204 = Class(NStructureUnit) {
     Weapons = {
         Turret01 = Class(NAMFlakWeapon) {
             TMDEffectBones = {'RadarDish',},
-            SalvoReloadTime = 1.4, --Change this to the correct amount for the weapon.
         },
     },
 
