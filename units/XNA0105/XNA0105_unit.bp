@@ -69,7 +69,7 @@ UnitBlueprint{
         MaxHealth = 450,
         RegenRate = 0,
         SubThreatLevel = 0,
-        SurfaceThreatLevel = 2,
+        SurfaceThreatLevel = 5,
     },
     Display = {
         BuildEffect = { ExtendsFront = 0.05 },
@@ -172,6 +172,8 @@ UnitBlueprint{
             LAYER_Water = false,
         },
         Elevation = 10,
+        FuelRechargeRate = 5,
+        FuelUseTime = 300,
         GroundCollisionOffset = 1.2,
         MaxSpeed = 0.5,
         MeshExtentsX = 1.25,
