@@ -57,7 +57,7 @@ UnitBlueprint{
     Defense = {
         AirThreatLevel = 40,
         ArmorType = "Experimental",
-        EconomyThreatLevel = 300,
+        EconomyThreatLevel = 2000,
         Health = 20000,
         MaxHealth = 20000,
         RegenRate = 20,
@@ -233,8 +233,8 @@ UnitBlueprint{
     LifeBarOffset = 5,
     LifeBarSize = 6,
     Physics = {
-        BackUpDistance = 12,
-        BankingSlope = 0,
+        BackUpDistance = 30,
+        BankingSlope = 3,
         BuildOnLayerCaps = {
             LAYER_Air = false,
             LAYER_Land = true,
