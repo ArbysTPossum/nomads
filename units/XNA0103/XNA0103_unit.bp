@@ -197,6 +197,8 @@ UnitBlueprint{
             LAYER_Water = false,
         },
         Elevation = 14,
+        FuelRechargeRate = 5,
+        FuelUseTime = 400,
         GroundCollisionOffset = 1.6,
         MaxSpeed = 0.5,
         MeshExtentsX = 1.35,
