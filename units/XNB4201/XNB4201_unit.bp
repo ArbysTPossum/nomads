@@ -162,6 +162,7 @@ UnitBlueprint{
             CannotAttackGround = true,
             CollideFriendly = false,
             Damage = 300,
+            DamageFriendly = false,
             DamageRadius = 1.5,
             DamageType = "Normal",
             DisplayName = "Missile (AA)",
