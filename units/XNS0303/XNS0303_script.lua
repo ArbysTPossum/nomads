@@ -3,7 +3,8 @@
 local NSeaUnit = import('/lua/nomadsunits.lua').NSeaUnit
 local AircraftCarrier = import('/lua/defaultunits.lua').AircraftCarrier
 local EMPGun = import('/lua/nomadsweapons.lua').EMPGun
-local NAMFlakWeapon = import('/lua/nomadsweapons.lua').NAMFlakWeapon
+local NAMFlakWeapon = import("/lua/terranweapons.lua").TAMPhalanxWeapon
+local AAGun = import('/lua/nomadsweapons.lua').MissileWeapon1
 local ExternalFactoryComponent = import("/lua/defaultcomponents.lua").ExternalFactoryComponent
 
 XNS0303 = Class(NSeaUnit, AircraftCarrier, ExternalFactoryComponent) {
@@ -12,27 +13,9 @@ XNS0303 = Class(NSeaUnit, AircraftCarrier, ExternalFactoryComponent) {
     BuildAttachBone = 'Pad1',
 
     Weapons = {
-        EMPGun1 = Class(EMPGun) {
-            FxMuzzleFlash = import('/lua/nomadseffecttemplate.lua').EMPGunMuzzleFlash_Tank,
-            CreateProjectileAtMuzzle = function(self, muzzle)
-                local proj = EMPGun.CreateProjectileAtMuzzle(self, muzzle)
-                local data = self:GetBlueprint().DamageToShields
-                if proj and not proj:BeenDestroyed() then
-                    proj:PassData(data)
-                end
-                return proj
-            end,
+        AAGun1 = Class(AAGun) {
         },
-        EMPGun2 = Class(EMPGun) {
-            FxMuzzleFlash = import('/lua/nomadseffecttemplate.lua').EMPGunMuzzleFlash_Tank,
-            CreateProjectileAtMuzzle = function(self, muzzle)
-                local proj = EMPGun.CreateProjectileAtMuzzle(self, muzzle)
-                local data = self:GetBlueprint().DamageToShields
-                if proj and not proj:BeenDestroyed() then
-                    proj:PassData(data)
-                end
-                return proj
-            end,
+        AAGun2 = Class(AAGun) {
         },
         EMPGun3 = Class(EMPGun) {
             FxMuzzleFlash = import('/lua/nomadseffecttemplate.lua').EMPGunMuzzleFlash_Tank,
@@ -160,16 +143,20 @@ XNS0303 = Class(NSeaUnit, AircraftCarrier, ExternalFactoryComponent) {
 
     BuildingState = State {
         Main = function(self)
+            local unitBuilding = self.UnitBeingBuilt
             self:SetBusy(true)
-            self:DetachAll( self.BuildAttachBone )
-            self.UnitBeingBuilt:HideBone( 0, true )
+            local bone = self.BuildAttachBone
+            self:DetachAll(bone)
+            unitBuilding:AttachTo(self, bone)
+            unitBuilding:HideBone(0, true)
             self.UnitDoneBeingBuilt = false
         end,
 
+        ---@param self XnS0303
+        ---@param unitBeingBuilt Unit
         OnStopBuild = function(self, unitBeingBuilt)
-            NSeaUnit.OnStopBuild(self, unitBeingBuilt)
+            AircraftCarrier.OnStopBuild(self, unitBeingBuilt)
             ExternalFactoryComponent.OnStopBuildWithStorage(self, unitBeingBuilt)
-            ChangeState(self, self.FinishedBuildingState)
         end,
     },
 
