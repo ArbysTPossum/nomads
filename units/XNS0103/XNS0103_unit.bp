@@ -215,7 +215,7 @@ UnitBlueprint{
             MaxRadius = 26,
             MuzzleSalvoDelay = 0,
             MuzzleSalvoSize = 1,
-            MuzzleVelocity = 35,
+            MuzzleVelocity = 120,
             ProjectileId = "/projectiles/NGattlingRound1/NGattlingRound1_proj.bp",
             ProjectileLifetimeUsesMultiplier = 1.15,
             ProjectilesPerOnFire = 1,
